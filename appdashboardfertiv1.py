@@ -4,6 +4,7 @@ import pandas as pd
 import os
 import plotly.express as px
 import base64
+import datetime
 from sklearn.tree import DecisionTreeClassifier, plot_tree
 from sklearn.preprocessing import LabelEncoder
 from sklearn.ensemble import RandomForestClassifier
@@ -56,7 +57,9 @@ st.markdown("""
 LOGO_PATH = r"C:/Users/AAUTOAGRI01/OneDrive - Compania Agricola Industrial Santa Ana, S. A/Imágenes/Santa Ana/Logos oficiales/Logos oficiales/logo-fondo-verde.png"
 CARPETA_CUMPLE = r"C:\Users\AAUTOAGRI01\OneDrive - Compania Agricola Industrial Santa Ana, S. A\Documentos\FERTILIZACION\RESULTADOS\comparativos PDF PANTE1\CUMPLE"
 CARPETA_NOCUMPLE = r"C:\Users\AAUTOAGRI01\OneDrive - Compania Agricola Industrial Santa Ana, S. A\Documentos\FERTILIZACION\RESULTADOS\comparativos PDF PANTE1\NO_CUMPLE"
-CSV_PATH = r"C:\\Users\\AAUTOAGRI01\\OneDrive - Compania Agricola Industrial Santa Ana, S. A\\Documentos\\FERTILIZACION\\RESULTADOS\\Resumen_Masivo_PANTE1_{}.csv"
+CSV_TEMPLATE = r"C:\\Users\\AAUTOAGRI01\\OneDrive - Compania Agricola Industrial Santa Ana, S. A\\Documentos\\FERTILIZACION\\RESULTADOS\\Resumen_Masivo_PANTE1_{date}.csv"
+FECHA_ACTUAL = datetime.date.today().strftime("%Y%m%d")
+CSV_PATH = CSV_TEMPLATE.format(date=FECHA_ACTUAL)
 
 # =================== CARGA DE DATOS =====================
 if not os.path.exists(CSV_PATH):
